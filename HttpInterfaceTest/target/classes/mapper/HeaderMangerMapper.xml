@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.qlk.test.dao.HeaderMangerMapper">
+
+	<resultMap type="cn.qlk.test.bean.HeaderManger" id="headerMangerId">
+	
+		<result column="id" property="id"/>
+		<result column="headername" property="headerName"/>
+		<result column="headercontent" property="headerContent"/>
+	</resultMap>
+	
+	<select id="getHeaders" resultMap="headerMangerId">
+		select * from  header_manger
+	</select>
+	
+	<insert id="insertHeader" parameterType="cn.qlk.test.bean.HeaderManger">
+		insert into header_manger (headername,headercontent) values (#{headerName},#{headerContent})
+	</insert>
+	
+	<update id="updateHeader" parameterType="cn.qlk.test.bean.HeaderManger" >
+		update header_manger set headername=#{headerName},headercontent=#{headerContent} where id=#{id}
+	</update>
+	
+	<select id="selectNameHeaders" parameterType="cn.qlk.test.bean.HeaderManger" resultMap="headerMangerId" >
+		
+		select * from  header_manger where headername like "%${headerName}%";
+	
+	</select>
+	
+	<delete id="deleteHeader" parameterType="int">
+	
+		delete from header_manger where id=#{id}
+		
+	</delete>
+
+</mapper>

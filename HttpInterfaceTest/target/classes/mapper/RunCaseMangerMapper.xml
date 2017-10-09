@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.qlk.test.dao.RunCaseMangerMapper">
+
+
+	<update id="updateRunCase" parameterType="cn.qlk.test.bean.CaseManger" >
+	
+		update  case_manger set auth_result=#{authResult},auth_status=#{authStatus},run_time=#{runTime},reason=#{reason}  where case_id=#{caseId}
+	
+	</update>
+	
+	<select id="selectPassCase" parameterType="cn.qlk.test.bean.CaseManger" resultType="int">
+		select count(*) from case_manger where auth_status="PASS"
+	</select>
+	
+	<select id="searchFailCase" parameterType="cn.qlk.test.bean.CaseManger" resultType="int">
+		select count(*) from case_manger where auth_status="FAIL"
+	</select>
+</mapper>

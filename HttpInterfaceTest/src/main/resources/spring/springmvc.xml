@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+xmlns:mvc="http://www.springframework.org/schema/mvc"  
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+       xmlns:context="http://www.springframework.org/schema/context"  
+      xmlns:aop="http://www.springframework.org/schema/aop"  
+       xmlns:tx="http://www.springframework.org/schema/tx"  
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  
+           http://www.springframework.org/schema/beans/spring-beans.xsd  
+           http://www.springframework.org/schema/aop  
+           http://www.springframework.org/schema/aop/spring-aop.xsd  
+            http://www.springframework.org/schema/context  
+           http://www.springframework.org/schema/context/spring-context-4.0.xsd  
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd  
+           http://www.springframework.org/schema/mvc  
+            http://www.springframework.org/schema/mvc/spring-mvc.xsd">  
+		
+		<!-- 配置controller -->
+		<context:component-scan base-package="cn.qlk.test.web"/>
+		
+		<!-- 注解配置映射器 -->
+		<bean  class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+		
+		
+		<!-- 注解配置适配器 -->
+		<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+			<property name="messageConverters">
+				<list>
+					<bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"></bean>
+				</list>
+				
+			</property>
+		</bean>
+		
+		<!-- 配置视图解析器 -->
+		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+			<property name="prefix" value="/WEB-INF/jsp/"/>
+			<property name="suffix" value=".jsp"/>
+		</bean>
+		
+	  	 <!-- 配置拦截器 -->
+	  	 <mvc:interceptors>
+	  	 	<!-- /**可以拦截多层路径 -->
+	  	 	<mvc:interceptor>
+	  	 		<mvc:mapping path="/**"/>
+	  	 		<bean class="cn.qlk.test.interceptor.LoginInterceptor"/>
+	  	 	</mvc:interceptor>
+	  	 </mvc:interceptors>
+<!-- 		<bean  
+       class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">  
+       <property name="messageConverters">  
+           <list>  
+            <bean class="org.springframework.http.converter.json. "></bean>  
+                <ref bean="mappingJacksonHttpMessageConverter" />  
+           </list>  
+       </property>  
+   </bean>  -->
+   
+
+   
+   
+   
+</beans>

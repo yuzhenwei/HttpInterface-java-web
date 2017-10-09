@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.qlk.test.dao.CaseMangerMapper"> 
+
+	<resultMap type="cn.qlk.test.bean.CaseManger" id="caseMangerId">
+		<result column="case_id" property="caseId"/>
+		<result column="interface_name" property="interfaceName"/>
+		<result column="interface_address" property="interfaceAdress"/>
+		<result column="interface_type" property="interfaceType"/>
+		<result column="interface_parameter" property="interfaceParameter"/>
+		<result column="expect_result" property="expectResult"/>
+		<result column="auth_result" property="authResult"/>
+		<result column="auth_status" property="authStatus"/>
+		<result column="interface_desc" property="interfaceDese"/>
+		<result column="run_time" property="runTime"/>
+		<result column="reason" property="reason"/>
+		<result column="region" property="region"/>
+		<result column="parameter_type" property="parameterType"/>
+		<result column="depend" property="depend"/>
+		<result column="depend_status" property="dependStatus"/>
+	</resultMap>
+	
+	<insert id="insertCase" parameterType="cn.qlk.test.bean.CaseManger">
+		INSERT INTO case_manger 
+		( interface_name, interface_address, interface_type,interface_parameter, expect_result, interface_desc,region,parameter_type,depend_status,depend )
+		 VALUES
+		 ( #{interfaceName}, #{interfaceAdress},#{interfaceType},#{interfaceParameter},#{expectResult},#{interfaceDese},#{region},#{parameterType},#{dependStatus},#{depend});
+	</insert>
+	
+	
+	<select id="selectCase" parameterType="cn.qlk.test.bean.CaseManger" resultMap="caseMangerId">
+		select * from case_manger where region=#{region}
+	</select>
+	
+	<delete id="deleteCase"  parameterType="int">
+		delete from case_manger where case_id=#{caseId}
+	</delete>
+	
+	<select id="searchInterface" parameterType="cn.qlk.test.bean.CaseManger" resultMap="caseMangerId">
+		select * from case_manger where region =#{region} and interface_name  like "%${interfaceName}%"
+	</select>
+	
+	<update id="updateCase" parameterType="cn.qlk.test.bean.CaseManger">
+	
+		update case_manger set interface_name=#{interfaceName}, interface_address=#{interfaceAdress}, 
+		interface_type=#{interfaceType},interface_parameter=#{interfaceParameter}, expect_result=#{expectResult}, interface_desc=#{interfaceDese},region=#{region},parameter_type=#{parameterType},depend_status=#{dependStatus},depend=#{depend}where case_id=#{caseId}
+	</update>
+	
+	<select id="selectCaseById"  parameterType="int" resultMap="caseMangerId">
+		select * from case_manger where case_id=#{caseId}
+	</select>
+	
+	<update id="deleteCaseRunResult">
+		update case_manger set auth_result=null,auth_status=null,run_time=null,reason=null where region=#{region}
+	</update>
+	
+	<select id="searchRunCaseResult" resultMap="caseMangerId" parameterType="cn.qlk.test.bean.CaseManger">
+		select * from case_manger
+		<where>
+			<choose>
+	          <when test="interfaceName != null and interfaceName !=''">
+	         	  interface_name  like "%${interfaceName}%" and auth_status is not null  and region=#{region}
+	          </when>
+	          <when test="authStatus != null and authStatus !=''">
+	    		 auth_status like "%${authStatus}%" and region=#{region} 
+	          </when>
+	          <otherwise>
+	          	auth_status is not null  and region=#{region}
+	          </otherwise>
+	        </choose>
+		</where>
+
+	</select>
+	
+	<select id="selectCaseByPage" resultMap="caseMangerId">
+		select * from case_manger where region =#{2} limit #{0},#{1};
+	</select>
+	
+</mapper>

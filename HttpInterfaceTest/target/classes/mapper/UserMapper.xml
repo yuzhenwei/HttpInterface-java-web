@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.qlk.test.dao.UserMapper">
+
+	<resultMap type="cn.qlk.test.bean.User" id="userId">
+	
+		<result column="id" property="id"/>
+		<result column="username" property="userName"/>
+		<result column="password" property="passWord"/>
+	</resultMap>
+	
+	<select id="getUser" resultMap="userId" parameterType="String">
+	
+		select * from test_user where username=#{userName};
+	</select>
+
+</mapper>

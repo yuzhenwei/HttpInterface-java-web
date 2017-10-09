@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.qlk.test.dao.LocationMapper">
+
+		<resultMap type="cn.qlk.test.bean.Location" id="locationResultMapId">
+			<result column="id" property="id" />
+			<result column="locationName" property="locationName" />
+			<result column="address" property="address" />	
+		</resultMap>
+
+		<!-- 添加测试地址信息 -->
+		<insert id="insert" parameterType="cn.qlk.test.bean.Location">
+			insert into location (locationName,address) VALUES(#{locationName},#{address})
+		</insert>
+		
+		<select id="searchLocation" parameterType="cn.qlk.test.bean.Location" resultMap="locationResultMapId">
+			
+			select * from location 
+			<where>
+				<if test="locationName != null">
+					locationName like "%${locationName}%"
+				</if>	
+			</where>
+			
+		</select>
+		<delete id="deleteLocation" parameterType="int" >
+			delete from location WHERE id=#{id};
+		</delete>
+		
+		<update id="updateLocation" parameterType="cn.qlk.test.bean.Location">
+		
+			update location set locationName=#{locationName},address=#{address} where id=#{id}
+		
+		</update>
+
+</mapper>
