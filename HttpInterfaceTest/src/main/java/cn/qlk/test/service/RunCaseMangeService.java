@@ -191,7 +191,7 @@ public class RunCaseMangeService {
 		
 		
 		
-		if(sendRequest.contains("F")){
+		if(sendRequest == null){
 			caseManger.setAuthStatus("FAIL");
 			caseManger.setReason("请求接口失败");
 			

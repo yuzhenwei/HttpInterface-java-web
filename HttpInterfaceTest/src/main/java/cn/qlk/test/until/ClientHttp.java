@@ -93,7 +93,7 @@ public class ClientHttp{
 	public String  getRequest(String url,List<BasicNameValuePair> param){
 		CloseableHttpClient httpClient = getHttpClient();
 		int status = 0;
-		String returnJson = "";
+		String returnJson =null;
 		
 		try{
 			HttpGet httpGet = new HttpGet(url);
@@ -185,7 +185,7 @@ public class ClientHttp{
 					if(status ==200){
 						returnJson=EntityUtils.toString(httpResponse.getEntity());			
 					}else{
-						returnJson="F";
+						return returnJson;
 					}
 				}catch(Exception e){
 					logger.error("可能是由于服务器重启导致连接失败！");
