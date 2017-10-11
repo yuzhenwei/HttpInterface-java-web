@@ -71,11 +71,13 @@ public class ClientHttp{
 			}catch(Exception e){
 				logger.error("可能是由于服务器重启导致连接失败！");
 				logger.error("请求错误", e);
+				return returnJson;
 			}finally{
 				httpResponse.close();
 			}	
 		}catch(Exception e){
 			logger.error("参数错误", e);
+			return returnJson;
 		}finally{
 			closeHttpClient(httpClient);
 		}		
@@ -138,7 +140,7 @@ public class ClientHttp{
 		  
 		  CloseableHttpClient httpClient = getHttpClient();
 			int status = 0;
-			String returnJson = "";
+			String returnJson = null;
 			StringEntity entity =null;
 			try{
 				HttpPost httpPost = new HttpPost(url);
@@ -220,18 +222,5 @@ public class ClientHttp{
 
 	    }
 	  
-	/* public static void main(String[] args) {
-		
-		 ClientHttp clientHttp = new ClientHttp();
-		 String url ="http://api.pdctest.7lk.cn/services/queryGoodsBySku";
-		 String param="companyCode=7LK_GZ&skuCodes=2000004781";
-		 String header=null;
-		 String Type = null;
-		 String mothed = "post";
-		 
-		 String sendRequest = clientHttp.sendRequest(url, param, header, mothed, Type);
-		 System.out.println(sendRequest);
-		 
-	}*/
 	
 }
