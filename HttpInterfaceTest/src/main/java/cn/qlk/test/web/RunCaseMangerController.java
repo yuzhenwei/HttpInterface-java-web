@@ -56,7 +56,10 @@ public class RunCaseMangerController {
 		for(int i=0;i<caseId.length;i++){
 			id =caseId[i];
 			runCaseMangeService.runCaseBacth(id, testLocationIp,header);
+			
 		}
+		
+		
 		HashMap<String, String> map = new HashMap<String,String>();
 		map.put("pass", runCaseMangeService.selectPassCase().toString());
 		map.put("fail", runCaseMangeService.searchFailCase().toString());

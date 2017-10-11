@@ -106,8 +106,9 @@ public class RunCaseMangeService {
 	 * 批量执行测试用例
 	 * @param id
 	 * @param testLocationIp
+	 * @return 
 	 */
-	public void runCaseBacth(int id, String testLocationIp,String header) {
+	public boolean runCaseBacth(int id, String testLocationIp,String header) {
 		/**
 		 * 2、获取接口地址
 		 * 3、获取请求方式
@@ -187,40 +188,66 @@ public class RunCaseMangeService {
 		JsonUntil jsonUntil = new JsonUntil(key,val);
 				//ExpectResultUntil expectResultUntil = new ExpectResultUntil();
 				//获取返回的验证字段的值
-				String pString=jsonUntil.getParamValue(sendRequest);
-				
-				String authResult=pString.replaceAll("null","");
-				
-				caseManger.setAuthResult(authResult);
-				
-				if(authResult.contains(expectResult)){
-					caseManger.setAuthStatus("PASS");
-					caseManger.setRunTime(runTime+"s");
-					try {
-						logger.debug("验证通过的接口的信息为："+caseManger.toString());
-						runCaseMangerMapper.updateRunCase(caseManger);
-						logger.debug("更新成功");
-						return;
-					} catch (Exception e) {
-						logger.debug("更新失败");
-						e.printStackTrace();
-					}
-					
-				}else{
-					caseManger.setAuthStatus("FAIL");
-					caseManger.setReason("实际结果与预期结果不匹配：<br>预期结果："+expectResult+"<br>"+"实际结果："+authResult);
-					try {
-						runCaseMangerMapper.updateRunCase(caseManger);
-						logger.debug("更新成功");
-						return;
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						logger.debug("更新失败");
-						e.printStackTrace();
-					}
+		
+		
+		
+		if(sendRequest.contains("F")){
+			caseManger.setAuthStatus("FAIL");
+			caseManger.setReason("请求接口失败");
+			
+			try {
+				runCaseMangerMapper.updateRunCase(caseManger);
+				logger.debug("更新成功");
+				return true;
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				logger.debug("更新失败");
+				e.printStackTrace();
+			}
+			
+			return false;
+			
+		}
+		
+		
+		
+		
+		String pString=jsonUntil.getParamValue(sendRequest);
+			
+		String authResult=pString.replaceAll("null","");
+		
+		caseManger.setAuthResult(authResult);
+		
+		if(authResult.contains(expectResult)){
+			
+			caseManger.setAuthStatus("PASS");
+			caseManger.setRunTime(runTime+"s");
+			try {
+				logger.debug("验证通过的接口的信息为："+caseManger.toString());
+				runCaseMangerMapper.updateRunCase(caseManger);
+				logger.debug("更新成功");
+				return true;
+			} catch (Exception e) {
+				logger.debug("更新失败");
+				e.printStackTrace();
+			}
+			
+		}else{
+				caseManger.setAuthStatus("FAIL");
+				caseManger.setReason("实际结果与预期结果不匹配：<br>预期结果："+expectResult+"<br>"+"实际结果："+authResult);
+				try {
+					runCaseMangerMapper.updateRunCase(caseManger);
+					logger.debug("更新成功");
+					return true;
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					logger.debug("更新失败");
+					e.printStackTrace();
 				}
-				
-				logger.debug("查询成功");
+			}
+			
+			logger.debug("查询成功");
+			return true;
 				
 		
 		

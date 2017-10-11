@@ -181,8 +181,12 @@ public class ClientHttp{
 				CloseableHttpResponse httpResponse = null;			
 				try {
 					httpResponse=httpClient.execute(httpPost);
-					status=httpResponse.getStatusLine().getStatusCode();
-					returnJson=EntityUtils.toString(httpResponse.getEntity());			
+					status=httpResponse.getStatusLine().getStatusCode();//获取请求的code
+					if(status ==200){
+						returnJson=EntityUtils.toString(httpResponse.getEntity());			
+					}else{
+						returnJson="F";
+					}
 				}catch(Exception e){
 					logger.error("可能是由于服务器重启导致连接失败！");
 					logger.error("请求错误", e);
