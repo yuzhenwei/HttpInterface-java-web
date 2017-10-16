@@ -108,7 +108,7 @@ public class RunCaseMangeService {
 	 * @param testLocationIp
 	 * @return 
 	 */
-	public boolean runCaseBacth(int id, String testLocationIp,String header) {
+	public void runCaseBacth(int id, String testLocationIp,String header) {
 		/**
 		 * 2、获取接口地址
 		 * 3、获取请求方式
@@ -198,15 +198,13 @@ public class RunCaseMangeService {
 			try {
 				runCaseMangerMapper.updateRunCase(caseManger);
 				logger.debug("更新成功");
-				return true;
+				return;
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				logger.debug("更新失败");
 				e.printStackTrace();
 			}
-			
-			return false;
-			
+						
 		}
 		
 		
@@ -226,7 +224,6 @@ public class RunCaseMangeService {
 				logger.debug("验证通过的接口的信息为："+caseManger.toString());
 				runCaseMangerMapper.updateRunCase(caseManger);
 				logger.debug("更新成功");
-				return true;
 			} catch (Exception e) {
 				logger.debug("更新失败");
 				e.printStackTrace();
@@ -238,7 +235,6 @@ public class RunCaseMangeService {
 				try {
 					runCaseMangerMapper.updateRunCase(caseManger);
 					logger.debug("更新成功");
-					return true;
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					logger.debug("更新失败");
@@ -246,9 +242,7 @@ public class RunCaseMangeService {
 				}
 			}
 			
-			logger.debug("查询成功");
-			return true;
-				
+			logger.debug("查询成功");				
 		
 		
 	}
@@ -391,7 +385,13 @@ public class RunCaseMangeService {
 		
 	}*/
 	
-	
+	/**
+	 * 获取依赖接口的字段，返回依赖的key和value
+	 * @param depend
+	 * @param testLocationIp
+	 * @param header
+	 * @return
+	 */
 	public  String  getDependPramater(String depend,String testLocationIp,String header){
 		
 		String paramValue = null;

@@ -250,4 +250,19 @@ function uncheck_doctor(){
 		
 		$("#dependId_span").html('格式：依赖接口序号=依赖的值，依赖的值...;（如：88=name,age,Id;22=name,...）');
 	}
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 

@@ -27,6 +27,7 @@
 	
 		var testLocationIp = $("#testLocationIp").combo("getValue");//获取测试环境地址
 		var fronId=$("#caseListDlgTab").datagrid("getSelections");//获取被选中的测试用例
+		var header=$("#headerIp_OFC").combo("getValue");//
 		if(testLocationIp ==""){
 			
 			//alert("请选择测试地址");
@@ -50,10 +51,11 @@
 				alert(caseId);*/
 			
 			//异步提交
+		       
 			$.ajax({
 				   type: "POST",
 				   url: "runMuchCase.action",
-				   data: {"caseId":caseId,"testLocationIp":testLocationIp},
+				   data: {"caseId":caseId,"testLocationIp":testLocationIp,"header":header},
 				   dataType:'json',
 				   traditional:true,
 				   //async: false, //同步请求，默认情况下是异步（true）

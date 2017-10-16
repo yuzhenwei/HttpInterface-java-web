@@ -24,6 +24,8 @@ import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import net.sf.json.JSONObject;
+
 public class ClientHttp{
 
 	private static final Logger logger = LoggerFactory.getLogger(ClientHttp.class);
@@ -155,7 +157,7 @@ public class ClientHttp{
 		        if(type !=null){
 		        	if(type.equals("json")){
 			        	
-			        	entity = new StringEntity(ConvertUntil.parameterConvertJs(parmater).toString(),"utf-8");
+			        	entity = new StringEntity(JSONObject.fromObject(parmater).toString(),"utf-8");
 			        	
 			        }else if (type.equals("arr")) {
 			        	

@@ -51,7 +51,7 @@
 				<label>依赖关系</label>
 			   	<input id="depend" name="depend" onfocus="onfocus_depend()"/><br>
 				<span class="red" id="dependId_span"></span>
-			</div>
+			</div>						
 		</form> 
 	
 	
