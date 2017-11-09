@@ -54,6 +54,34 @@ public class CaseMangerService {
 
 		
 	}
+	
+	//批量查询测试用例并导出
+	/**
+	 * 
+	 * @param region
+	 * @param interfaceName
+	 * @return
+	 */
+	public List<CaseManger> selectCaseExcel(String region, String interfaceName){
+		List<CaseManger> selectCaseExcel =null;
+		CaseManger caseManger = new CaseManger();
+		caseManger.setRegion(region);
+		caseManger.setInterfaceName(interfaceName);
+		try {
+			
+			selectCaseExcel = caseMangerMapper.searchInterface(caseManger);
+			return selectCaseExcel;
+			
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+		
+		return selectCaseExcel;
+
+		
+	}
+	
 	//删除测试用例
 	public void deleteCase(int caseId){
 		

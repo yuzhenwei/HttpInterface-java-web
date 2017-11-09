@@ -16,7 +16,7 @@ public class CaseManger {
 	private String region;//平台
 	private String parameterType;//参数请求类型
 	private String depend;//接口依赖
-	private int dependStatus;//接口依赖
+	private int dependStatus;//接口依赖状态
 	
 	public int getCaseId() {
 		return caseId;

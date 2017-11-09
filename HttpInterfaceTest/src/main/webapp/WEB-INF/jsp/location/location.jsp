@@ -44,7 +44,7 @@
 		<div id="locationButton">
 			<a href="#" class="easyui-linkbutton" iconCls="icon-add"  onclick="addLocation()">添加</a>
 			<a href="#" class="easyui-linkbutton" iconCls="icon-edit" onclick="updateLocation()">修改</a>
-			<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="delLocation()">删除</a>				
+			<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="delLocation()">删除</a>							
 		</div>
 	</div>
 	

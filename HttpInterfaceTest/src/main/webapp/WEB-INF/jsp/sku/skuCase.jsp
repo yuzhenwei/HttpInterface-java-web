@@ -20,12 +20,13 @@
 	<link rel="stylesheet" type="text/css" href="css/themes/icon.css"/>
 	<link rel="stylesheet" type="text/css" href="css/themes/default/easyui.css"/>
  -->
- 
-
-	<%@include file="../caseManger/AddCasePage.jsp" %>
-	<%@include file="../caseManger/EditCasePage.jsp" %>
 	<title>用例管理</title>
+	
+	<%@ include file="../caseManger/AddCasePage.jsp" %>
+	<%@ include file="../caseManger/EditCasePage.jsp" %>
+	<%@ include file="../batchPage/batchAddPage.jsp" %>
 </head>
+	
 <body>
 	<!-- 用例集管理页面----------------------------------------------------------------------------------------------------------------------------------  -->
 
@@ -59,8 +60,12 @@
 	    <div id="caseListTb_sku" style="padding:5px;">
 			<a href="#" class="easyui-linkbutton" iconCls="icon-add"  onClick="addCaseList()">添加</a>&nbsp;
 			<a href="#" class="easyui-linkbutton" iconCls="icon-edit"  onClick="editCaseList_sku()">修改</a>&nbsp;
-			<a href="#" class="easyui-linkbutton" iconCls="icon-remove"  onClick="deleteCaseList_sku()">删除</a>	&nbsp;		
+			<a href="#" class="easyui-linkbutton" iconCls="icon-remove"  onClick="deleteCaseList_sku()">删除</a>	&nbsp;
+			<a href="#" class="easyui-linkbutton" iconCls="icon-redo"  onClick="batchAddCase()">批量导入</a>&nbsp;
+			<a href="#" class="easyui-linkbutton" iconCls="icon-undo"  onClick="batchOutCase()">批量导出</a>&nbsp;	        
 		</div>
+		
+		
 		<!-- 注释 -->
 		<div id="edListTb_sku" style="padding:5px;">
 			<label>测试地址</label>
@@ -74,10 +79,6 @@
 		</div>
 	</div>	
 	
-	<script type="text/javascript">
-	
-		
-	</script>
 		   
 </body>
 </html>

@@ -11,8 +11,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<base href="<%=basePath %>">
 	<script type="text/javascript"  src="js/jquery.min.js"></script>
-	<script type="text/javascript"  src="js/jquery.easyui.min.js"></script>
+	<script type="text/javascript"  src="js/jquery.easyui.min.js"></script>	
 	<script type="text/javascript"  src="js/easyui-lang-zh_CN.js"></script>	
+		
 	<script type="text/javascript" 	src="js/firstPage/firstPage.js"></script>
 	<script type="text/javascript" src="js/caseManger/caseManger.js"></script>
 	<script type="text/javascript" src="js/caseManger/caseExecute.js"></script>
@@ -22,8 +23,7 @@
 	<script type="text/javascript" src="js/ODCManger/odcManger.js"></script>
 	<script type="text/javascript" src="js/SkuManger/skuManger.js"></script>
 	<script type="text/javascript" src="js/doctor/doctorManger.js"></script>
-	<script type="text/javascript" src="js/patient/patientManger.js"></script>
-	
+	<script type="text/javascript" src="js/patient/patientManger.js"></script>	
 	<link rel="stylesheet" type="text/css" href="css/themes/icon.css"/>
 	<link rel="stylesheet" type="text/css" href="css/themes/default/easyui.css"/>
 	<link rel="stylesheet" type="text/css" href="css/custom/custom.css">

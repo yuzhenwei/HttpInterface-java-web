@@ -79,4 +79,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from case_manger where region =#{2} limit #{0},#{1};
 	</select>
 	
+	
+	
 </mapper>

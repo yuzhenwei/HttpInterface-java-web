@@ -163,6 +163,7 @@ public class CaseMangerController {
 		
 		map.put("total", total);
 		map.put("rows", selectCaseByPage);
+		map.put("pageSize", rows);
 		return map;
 		
 		
@@ -178,10 +179,14 @@ public class CaseMangerController {
 	 */
 	@RequestMapping("/deleteCase")
 	@ResponseBody
-	public Map<String,String> deleteCase(int caseId){
+	public Map<String,String> deleteCase(int[] caseId){
 		
 		Map<String, String> map = new HashMap<String, String>();
-		CaseMangerService.deleteCase(caseId);
+		Integer id=null;
+		for(int i=0;i<caseId.length;i++){
+			id =caseId[i];
+			CaseMangerService.deleteCase(id);
+		}
 		map.put("status", "ok");
 		return map;
 		

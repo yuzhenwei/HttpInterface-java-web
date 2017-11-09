@@ -1,6 +1,5 @@
 function searchInterface_sku(){
 	var interfaceName=$("#interfaceName_sku").val();
-	
 	$.get("case/searchInterface.action?interfaceName="+interfaceName+"&region=SKU",
 			function(data){
 		$("#caseListDlgTab_sku").datagrid("loadData",data);//加载本地数据
@@ -74,9 +73,41 @@ function cutmuchCaseList_sku(){
 //删除用例
 function deleteCaseList_sku(){
 	
-	var row = $("#caseListDlgTab_sku").datagrid("getSelected");
+	//var row = $("#caseListDlgTab_sku").datagrid("getSelected");
 	
-	if(row !=null && row !=""){
+	var fronId=$("#caseListDlgTab_sku").datagrid("getSelections");
+	 
+     
+     if(fronId !=null && fronId !=""){
+    	 
+    	 var caseId = new Array();
+         for(var i=0; i<fronId.length; i++){  
+      	   caseId.push(fronId[i].caseId);
+         } 
+         
+         $.ajax({
+  		   type: "POST",
+  		   url: "case/deleteCase.action",
+  		   data: {"caseId":caseId},
+  		   dataType:'json',
+  		   traditional:true,
+  		   success: function(msg){
+  			   if(msg.status == "ok"){
+  				   //alert("测试用例执行完成：通过"+msg.pass+"个,失败"+msg.fail+"个");
+  				   $.messager.alert('提示','删除成功','info'); 
+  				   $("#caseListDlgTab_sku").datagrid('reload');
+  			   }   
+  		   }
+  		});
+    	 
+     }else{
+    	 
+    	 $.messager.alert('提示','请选择要删除的数据','warning');
+    	 
+     }
+     
+	
+/*	if(row !=null && row !=""){
 		$.get(
 				"case/deleteCase.action?caseId="+row.caseId,
 				function(data){
@@ -94,7 +125,7 @@ function deleteCaseList_sku(){
 	}else{
 		
 		$.messager.alert('提示','请选择要删除的数据','warning');
-	}
+	}*/
 	
 	
 	
@@ -187,8 +218,61 @@ function searchRunCaseResultInterface_sku(){
 	
 }
 
+	function batchAddCase(){
+
+		$("#importExcel").dialog("setTitle","批量导入").dialog("open").dialog("vcenter");
+	}
 
 
+	function uploadExcel() {
 
+
+		/* 配置导入框 */
+				$("#uploadExcel").form('submit',{
+					type : 'post',
+					url : 'LeadToExcel/LeadInUser.action',
+					dataType : "json",
+					onSubmit: function() {
+						
+						
+						var fileName= $('#excel').val(); 
+						  //对文件格式进行校验  
+		                 var index1=fileName.lastIndexOf('.');
+		                 var index2=fileName.length;
+		                 var d1=fileName.substring(index1+1,index2);
+
+						if (fileName == "") {  
+						      $.messager.alert('Excel批量用户导入', '请选择将要上传的文件!'); 
+						      return false;  
+						 }else if(d1!= "xlsx"){
+							 $.messager.alert('提示','请选择正确格式文件','info');  
+							 return false; 
+						 }
+						 $("#booten").linkbutton('disable');
+		                return true;  
+		            }, 
+					success : function(result) {
+						var result = eval('(' + result + ')');
+						if (result.success == "ok") { 
+							$.messager.alert('提示!', '导入成功','info',
+									function() {
+										$("#booten").linkbutton('enable');
+										$('#importExcel').dialog('close');
+										$('#caseListDlgTab_sku').datagrid('reload');
+								    });
+						} else {
+							$.messager.confirm('提示',"导入失败!");
+							$("#booten").linkbutton('enable');
+						}
+					}
+				});
+	}
+
+
+	function batchOutCase(){
+		
+		var interfaceName=$("#interfaceName_sku").val();		
+		window.location.href="LeadToExcel/outExcel.action?interfaceName="+interfaceName+"&region=SKU";
+	}
 
 

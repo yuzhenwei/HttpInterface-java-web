@@ -59,7 +59,9 @@
 	    <div id="caseListTb_patient" style="padding:5px;">
 			<a href="#" class="easyui-linkbutton" iconCls="icon-add"  onClick="addCaseList()">添加</a>&nbsp;
 			<a href="#" class="easyui-linkbutton" iconCls="icon-edit"  onClick="editCaseList_patient()">修改</a>&nbsp;
-			<a href="#" class="easyui-linkbutton" iconCls="icon-remove"  onClick="deleteCaseList_patient()">删除</a>	&nbsp;		
+			<a href="#" class="easyui-linkbutton" iconCls="icon-remove"  onClick="deleteCaseList_patient()">删除</a>	&nbsp;			
+			<a href="#" class="easyui-linkbutton" iconCls="icon-undo"  onClick="batchOutCase_patient()">批量导出</a>&nbsp;	        
+					
 		</div>
 		<!-- 注释 -->
 		<div id="edListTb_patient" style="padding:5px;">

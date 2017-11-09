@@ -28,8 +28,7 @@ public interface CaseMangerMapper {
 	 * @throws Exception
 	 */
 	public List<CaseManger> selectCase(String region) throws Exception;
-	
-	
+		
 	/**
 	 * 根据用例的序号删除测试用例
 	 * @param caseId

@@ -82,30 +82,38 @@ function closeCase(){
 //删除用例
 function deleteCaseList(){
 	
-	var row = $("#caseListDlgTab").datagrid("getSelected");
-	if(row != null && row != ""){
-		
-		$.get(
-				"case/deleteCase.action?caseId="+row.caseId,
-				function(data){
-					if(data.status =="ok"){
-						
-						//alert("删除成功");
-						$.messager.alert('提示','删除成功','info');
-						$("#caseListDlgTab").datagrid("load","");
-						/*$("#caseListDlgTab_odc").datagrid("load","");
-						$("#caseListDlgTab_sku").datagrid("load","");*/
-					}
-					
-				}
-				
-		);"json"
-	}else{
-		
-		$.messager.alert('提示','请选择要删除的数据','warning');
-	}
+	//var row = $("#caseListDlgTab").datagrid("getSelected");
 	
-	
+	var fronId=$("#caseListDlgTab").datagrid("getSelections");
+	 
+    
+    if(fronId !=null && fronId !=""){
+   	 
+   	 var caseId = new Array();
+        for(var i=0; i<fronId.length; i++){  
+     	   caseId.push(fronId[i].caseId);
+        } 
+        
+        $.ajax({
+ 		   type: "POST",
+ 		   url: "case/deleteCase.action",
+ 		   data: {"caseId":caseId},
+ 		   dataType:'json',
+ 		   traditional:true,
+ 		   success: function(msg){
+ 			   if(msg.status == "ok"){
+ 				   //alert("测试用例执行完成：通过"+msg.pass+"个,失败"+msg.fail+"个");
+ 				   $.messager.alert('提示','删除成功','info'); 
+ 				   $("#caseListDlgTab").datagrid('reload');
+ 			   }   
+ 		   }
+ 		});
+   	 
+    }else{
+   	 
+   	 $.messager.alert('提示','请选择要删除的数据','warning');
+   	 
+    }
 	
 }
 
@@ -252,6 +260,11 @@ function uncheck_doctor(){
 	}
 	
 	
+function batchOutCase_OFC(){
+	
+	var interfaceName=$("#interfaceName").val();		
+	window.location.href="LeadToExcel/outExcel.action?interfaceName="+interfaceName+"&region=OFC";
+}
 
 	
 	
