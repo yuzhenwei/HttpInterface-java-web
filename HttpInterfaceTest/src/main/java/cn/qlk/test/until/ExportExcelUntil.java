@@ -106,7 +106,7 @@ public class ExportExcelUntil {
             }
             //5.输出
             out.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-            out.setHeader("Content-disposition", "attachment;filename="+new String(title.getBytes("utf-8"),"iso-8859-1"));
+            out.setHeader("Content-disposition", "attachment;filename="+new String(title.getBytes("utf-8"),"iso-8859-1")+".xlsx");
             
             workbook.write(out.getOutputStream());
             workbook.close();
