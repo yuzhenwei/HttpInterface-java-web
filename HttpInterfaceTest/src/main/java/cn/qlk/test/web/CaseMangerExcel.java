@@ -56,7 +56,7 @@ public class CaseMangerExcel {
 				caseManger.setDependStatus(0);
 			}
 
-			if(readExcel.size() == 9){
+			if(caseList.length == 10){
 				
 				caseManger.setDepend(caseList[9]);
 				
