@@ -56,7 +56,15 @@ public class CaseMangerExcel {
 				caseManger.setDependStatus(0);
 			}
 
-			caseManger.setDepend(caseList[9]);//依赖关系
+			if(readExcel.size() == 9){
+				
+				caseManger.setDepend(caseList[9]);
+				
+			}else{
+				caseManger.setDepend(null);
+				
+			}
+			//依赖关系
 			CaseMangerService.addCase(caseManger);
 		}
 
