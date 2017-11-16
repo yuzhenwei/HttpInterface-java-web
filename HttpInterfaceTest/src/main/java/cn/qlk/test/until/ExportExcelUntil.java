@@ -61,7 +61,7 @@ public class ExportExcelUntil {
             
             //3.2创建列标题;并且设置列标题
             XSSFRow row2 = sheet.createRow(1);
-            String[] titles = {"接口名称","接口地址","归属平台","请求方式","请求参数","参数格式","预期结果","用例描述","是否依赖","依赖关系"};
+            String[] titles = {"接口名称","接口地址","归属平台","请求方式","请求参数","参数格式","预期结果","用例描述","是否依赖","依赖关系","是否含请求头","请求头"};
             for(int i=0;i<titles.length;i++)
             {
                 XSSFCell cell2 = row2.createCell(i);
@@ -101,6 +101,12 @@ public class ExportExcelUntil {
                     
                     XSSFCell cell10 = row3.createCell(9);
                     cell10.setCellValue(caseMangers.get(j).getDepend());
+                    
+                    XSSFCell cell11 = row3.createCell(10);
+                    cell11.setCellValue(caseMangers.get(j).getHeaderStatus());
+                    
+                    XSSFCell cell12 = row3.createCell(11);
+                    cell12.setCellValue(caseMangers.get(j).getHeader());
                     
                 }
             }

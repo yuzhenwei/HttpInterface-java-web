@@ -21,13 +21,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="parameter_type" property="parameterType"/>
 		<result column="depend" property="depend"/>
 		<result column="depend_status" property="dependStatus"/>
+		<result column="header"   property="header"/>
+		<result column="header_status" property="headerStatus"/>
+		
+		
 	</resultMap>
 	
 	<insert id="insertCase" parameterType="cn.qlk.test.bean.CaseManger">
 		INSERT INTO case_manger 
-		( interface_name, interface_address, interface_type,interface_parameter, expect_result, interface_desc,region,parameter_type,depend_status,depend )
+		( interface_name, interface_address, interface_type,interface_parameter, expect_result, interface_desc,region,parameter_type,depend_status,depend,header,header_status )
 		 VALUES
-		 ( #{interfaceName}, #{interfaceAdress},#{interfaceType},#{interfaceParameter},#{expectResult},#{interfaceDese},#{region},#{parameterType},#{dependStatus},#{depend});
+		 ( #{interfaceName}, #{interfaceAdress},#{interfaceType},#{interfaceParameter},#{expectResult},#{interfaceDese},#{region},#{parameterType},#{dependStatus},#{depend},#{header},#{headerStatus});
 	</insert>
 	
 	
@@ -46,7 +50,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateCase" parameterType="cn.qlk.test.bean.CaseManger">
 	
 		update case_manger set interface_name=#{interfaceName}, interface_address=#{interfaceAdress}, 
-		interface_type=#{interfaceType},interface_parameter=#{interfaceParameter}, expect_result=#{expectResult}, interface_desc=#{interfaceDese},region=#{region},parameter_type=#{parameterType},depend_status=#{dependStatus},depend=#{depend}where case_id=#{caseId}
+		interface_type=#{interfaceType},interface_parameter=#{interfaceParameter}, expect_result=#{expectResult}, interface_desc=#{interfaceDese},region=#{region},parameter_type=#{parameterType},depend_status=#{dependStatus},depend=#{depend},header=#{header},header_status=#{headerStatus} where case_id=#{caseId}
 	</update>
 	
 	<select id="selectCaseById"  parameterType="int" resultMap="caseMangerId">

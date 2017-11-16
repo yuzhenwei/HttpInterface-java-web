@@ -16,7 +16,7 @@ function cutmuchCaseList_odc(){
 	
 	var testLocationIp = $("#testLocationIp_odc").combo("getValue");//获取测试环境地址
 	var fronId=$("#caseListDlgTab_odc").datagrid("getSelections");//获取被选中的测试用例
-	var header=$("#headerIp_odc").combo("getValue");//
+	//var header=$("#headerIp_odc").combo("getValue");//
 	
 	
 	if(testLocationIp ==""){
@@ -43,7 +43,7 @@ function cutmuchCaseList_odc(){
 		$.ajax({
 			   type: "POST",
 			   url: "runMuchCase.action",
-			   data: {"caseId":caseId,"testLocationIp":testLocationIp,"header":header},
+			   data: {"caseId":caseId,"testLocationIp":testLocationIp},
 			   dataType:'json',
 			   traditional:true,
 			   //async: false, //同步请求，默认情况下是异步（true）
@@ -117,13 +117,24 @@ function editCaseList_odc(){
 		$("#editcasePageId").dialog("setTitle","修改用例");
 		$("#editcasePageFromId").form("load",row);
 		
-		if($(":radio:checked").val() == 1){ //如果是否的时候，隐藏依赖的输入框
+		if($("input[name='dependStatus']:radio:checked").val() == 1){ //如果是否的时候，隐藏依赖的输入框
 			
 			$("#dependId_edit").css('display','block'); 
-			//alert($(":radio:checked").val());
+			
+			
 		}else{
 			
 			$("#dependId_edit").css('display','none'); 
+		}
+		
+
+		if($("input[name='headerStatus']:radio:checked").val() == 1){ //如果是否的时候，隐藏依赖的输入框
+			
+			$("#headerId_edit").css('display','block'); 
+		
+		}else{
+			
+			$("#headerId_edit").css('display','none'); 
 		}
 		
 		$("#editcasePageId").dialog("open").dialog("vcenter");

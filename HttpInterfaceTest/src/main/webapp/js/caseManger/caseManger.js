@@ -7,9 +7,12 @@ function addCaseList(){
 
 	document.getElementsByName("dependStatus")[0].checked="checked"; //设置是否有依赖的否为选中 
 
+	document.getElementsByName("headerStatus")[0].checked="checked";
 		if($(":radio:checked").val() == 0){ //如果是否的时候，隐藏依赖的输入框
 			
 			$("#dependId").css('display','none'); 
+			$("#headerId").css('display','none');
+			
 		}
 
 }
@@ -144,13 +147,24 @@ function editCaseList(){
 		$("#editcasePageId").dialog("setTitle","修改用例");
 		$("#editcasePageFromId").form("load",row);
 		
-		if($(":radio:checked").val() == 1){ //如果是否的时候，隐藏依赖的输入框
+		if($("input[name='dependStatus']:radio:checked").val() == 1){ //如果是否的时候，隐藏依赖的输入框
 			
 			$("#dependId_edit").css('display','block'); 
-			alert($(":radio:checked").val());
+			
+			
 		}else{
 			
 			$("#dependId_edit").css('display','none'); 
+		}
+		
+
+		if($("input[name='headerStatus']:radio:checked").val() == 1){ //如果是否的时候，隐藏依赖的输入框
+			
+			$("#headerId_edit").css('display','block'); 
+		
+		}else{
+			
+			$("#headerId_edit").css('display','none'); 
 		}
 		
 		$("#editcasePageId").dialog("open").dialog("vcenter");
@@ -267,9 +281,32 @@ function batchOutCase_OFC(){
 }
 
 	
+
+function check_header(){
+	
+	$("#headerId").css('display','block'); 
+
+}
+
+function uncheck_header(){
+	
+	$("#headerId").css('display','none'); 
+
+}
 	
 	
+
+function check_header_edit(){
 	
+	$("#headerId_edit").css('display','block'); 
+
+}
+
+function uncheck_header_edit(){
+	
+	$("#headerId_edit").css('display','none'); 
+
+}
 	
 	
 	

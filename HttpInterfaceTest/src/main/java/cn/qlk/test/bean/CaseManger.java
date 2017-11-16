@@ -17,6 +17,10 @@ public class CaseManger {
 	private String parameterType;//参数请求类型
 	private String depend;//接口依赖
 	private int dependStatus;//接口依赖状态
+	private String header;
+	private int headerStatus;
+	
+	
 	
 	public int getCaseId() {
 		return caseId;
@@ -122,6 +126,25 @@ public class CaseManger {
 		this.dependStatus = dependStatus;
 	}
 	
+	
+	
+	
+	public String getHeader() {
+		return header;
+	}
+	public void setHeader(String header) {
+		this.header = header;
+	
+	}
+	
+	
+
+	public int getHeaderStatus() {
+		return headerStatus;
+	}
+	public void setHeaderStatus(int headerStatus) {
+		this.headerStatus = headerStatus;
+	}
 	@Override
 	public String toString() {
 		return "CaseManger [caseId=" + caseId + ", interfaceName=" + interfaceName + ", interfaceAdress="

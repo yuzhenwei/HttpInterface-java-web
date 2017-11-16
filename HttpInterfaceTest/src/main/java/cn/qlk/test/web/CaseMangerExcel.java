@@ -47,21 +47,25 @@ public class CaseMangerExcel {
 			caseManger.setParameterType(caseList[5]);
 			caseManger.setExpectResult(caseList[6]);//预期结果
 			caseManger.setInterfaceDese(caseList[7]);//接口描述
-			if(caseList[8].contains("是")){
+			if(caseList[8].equals("是")){
 				
 				caseManger.setDependStatus(1);
+				caseManger.setDepend(caseList[9]);
 				
 			}else{
 				
 				caseManger.setDependStatus(0);
+				caseManger.setDepend(null);
 			}
 
-			if(caseList.length == 10){
+			if(caseList[10].equals("是")){
+				caseManger.setHeaderStatus(1);
+				caseManger.setHeader(caseList[11]);
 				
-				caseManger.setDepend(caseList[9]);
 				
 			}else{
-				caseManger.setDepend(null);
+				caseManger.setHeaderStatus(0);
+				caseManger.setHeader(null);
 				
 			}
 			//依赖关系

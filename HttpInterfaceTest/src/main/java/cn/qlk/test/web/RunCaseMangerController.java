@@ -21,25 +21,7 @@ public class RunCaseMangerController {
 
 	@Autowired
 	private RunCaseMangeService runCaseMangeService;
-	/**
-	 * 执行单个测试用例
-	 * @param caseManger
-	 * @param location
-	 */	
-	/*@RequestMapping("/runCase")
-	@ResponseBody
-	public Map<String, String> runCase (CaseManger caseManger,Location location,String header,String Type){
-		HashMap<String, String> map = new HashMap<String,String>();
-		try {
-			runCaseMangeService.runCaseOne(caseManger, location,header,Type);
-			map.put("status", "ok");
-		} catch (Exception e) {
-			
-			logger.debug("失败");
-		}
-		
-		return map;
-	}*/
+	
 	
 	/**
 	 * 
@@ -53,11 +35,30 @@ public class RunCaseMangerController {
 		
 		Integer id=null;
 		//遍历选中的测试用例
-		for(int i=0;i<caseId.length;i++){
-			id =caseId[i];
-			runCaseMangeService.runCaseBacth(id, testLocationIp,header);
+		if (header !=null) {
 			
+
+			for(int i=0;i<caseId.length;i++){
+				id =caseId[i];
+				runCaseMangeService.runCaseBacthHeader(id, testLocationIp, header);
+				
+			}
+			
+		} else {
+			
+			for(int i=0;i<caseId.length;i++){
+				id =caseId[i];
+				runCaseMangeService.runCaseBacth(id, testLocationIp);
+				
+			}
+			
+
 		}
+		
+		
+		
+		
+		
 		
 		
 		HashMap<String, String> map = new HashMap<String,String>();

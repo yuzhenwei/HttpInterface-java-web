@@ -140,13 +140,24 @@ function editCaseList_sku(){
 		$("#editcasePageId").dialog("setTitle","修改用例");
 		$("#editcasePageFromId").form("load",row);
 		
-		if($(":radio:checked").val() == 1){ //如果是否的时候，隐藏依赖的输入框
+	if($("input[name='dependStatus']:radio:checked").val() == 1){ //如果是否的时候，隐藏依赖的输入框
 			
 			$("#dependId_edit").css('display','block'); 
-			alert($(":radio:checked").val());
+			
+			
 		}else{
 			
 			$("#dependId_edit").css('display','none'); 
+		}
+		
+
+		if($("input[name='headerStatus']:radio:checked").val() == 1){ //如果是否的时候，隐藏依赖的输入框
+			
+			$("#headerId_edit").css('display','block'); 
+		
+		}else{
+			
+			$("#headerId_edit").css('display','none'); 
 		}
 		$("#editcasePageId").dialog("open").dialog("vcenter");
 		
