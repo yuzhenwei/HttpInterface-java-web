@@ -128,7 +128,7 @@ public class RunCaseMangeService {
 		
 		String dependPramater = null ;//依赖字段
 		
-		String interfaceParameter =null;
+		String interfaceParameter = null;
 		//判断是否有接口依赖
 		if(caseManger.getDependStatus() != 0 && caseManger.getDepend() !=null){
 			
@@ -157,6 +157,10 @@ public class RunCaseMangeService {
 				interfaceParameter = caseManger.getInterfaceParameter();
 				
 			}
+		}else{
+			
+			interfaceParameter = caseManger.getInterfaceParameter();
+			
 		}
 		
 				
@@ -493,6 +497,9 @@ public class RunCaseMangeService {
 				interfaceParameter = caseManger.getInterfaceParameter();
 				
 			}
+		}else{
+			
+			interfaceParameter = caseManger.getInterfaceParameter();
 		}
 		
 				
