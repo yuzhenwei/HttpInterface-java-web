@@ -23,7 +23,7 @@ function saveCase(){
 	var pass=true;
 	$("#casePageFromId").find("input").each(function(){
 		
-		if(this.value == '' && this.name != "depend" && this.name != "interfaceDese") { 
+		if(this.value == '' && this.name != "depend" && this.name != "interfaceDese" && this.name !="header") { 
 			text = $(this).prev().text(); 
 			$.messager.alert('提示',text+'是必填项','warning'); 
 			this.focus(); 
@@ -182,7 +182,7 @@ function editsaveCase(){
 	var pass=true;
 	$("#editcasePageFromId").find("input").each(function(){
 		
-		if(this.value == '' && this.name != "depend" && this.name != "interfaceDese") { 
+		if(this.value == '' && this.name != "depend" && this.name != "interfaceDese" && this.name !="header") { 
 			text = $(this).prev().text(); 
 			$.messager.alert('提示',text+'是必填项','warning'); 
 			this.focus(); 
