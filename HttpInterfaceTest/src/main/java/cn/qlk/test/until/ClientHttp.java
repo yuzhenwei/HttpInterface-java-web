@@ -1,14 +1,9 @@
 package cn.qlk.test.until;
 
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import javax.print.attribute.standard.MediaName;
-
 import org.apache.http.Consts;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -159,6 +154,7 @@ public class ClientHttp{
 			        	
 			        	entity = new StringEntity(JSONObject.fromObject(parmater).toString(),"utf-8");
 			        	
+			        	httpPost.setHeader("Content-Type","application/json");
 			        }else if (type.equals("arr")) {
 			        	
 			        	entity = new StringEntity(ConvertUntil.parameterConvertJsArr(parmater).toString(),"utf-8");

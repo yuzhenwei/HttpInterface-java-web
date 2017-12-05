@@ -69,7 +69,7 @@
 		<!-- 注释 -->
 		<div id="edListTb_sku" style="padding:5px;">
 			<label>测试地址</label>
-			<input id="testLocationIp_sku" class="easyui-combobox"  valueField="address" textField="locationName" url="location/searchLocation.action" /> 
+			<input id="testLocationIp_sku" class="easyui-combobox"  valueField="address" textField="locationName" url="location/searchLocation.action?region=SKU" /> 
 			&nbsp;
 			<!-- <a href="#" class="easyui-linkbutton" iconCls="icon-cut"  onClick="cutCaseList()">执行</a> -->
 			<!-- <label>请求头</label>

@@ -8,12 +8,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<resultMap type="cn.qlk.test.bean.Location" id="locationResultMapId">
 			<result column="id" property="id" />
 			<result column="locationName" property="locationName" />
-			<result column="address" property="address" />	
+			<result column="address" property="address" />
+			<result column="region" property="region" />		
 		</resultMap>
 
 		<!-- 添加测试地址信息 -->
 		<insert id="insert" parameterType="cn.qlk.test.bean.Location">
-			insert into location (locationName,address) VALUES(#{locationName},#{address})
+			insert into location (locationName,address,region) VALUES(#{locationName},#{address},#{region})
 		</insert>
 		
 		<select id="searchLocation" parameterType="cn.qlk.test.bean.Location" resultMap="locationResultMapId">
@@ -22,6 +23,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<where>
 				<if test="locationName != null">
 					locationName like "%${locationName}%"
+				</if>
+				<if test="region !=null">
+				 and region=#{region}					
 				</if>	
 			</where>
 			
@@ -32,7 +36,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 		<update id="updateLocation" parameterType="cn.qlk.test.bean.Location">
 		
-			update location set locationName=#{locationName},address=#{address} where id=#{id}
+			update location set locationName=#{locationName},address=#{address},region=#{region} where id=#{id}
 		
 		</update>
 

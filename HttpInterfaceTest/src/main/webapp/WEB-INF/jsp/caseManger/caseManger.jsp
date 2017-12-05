@@ -64,7 +64,7 @@
 		<!-- 注释 -->
 		<div id="edListTb" style="padding:5px;">
 			<label>测试地址</label>
-			<input id="testLocationIp" class="easyui-combobox"  valueField="address" textField="locationName" url="location/searchLocation.action" /> 
+			<input id="testLocationIp" class="easyui-combobox"  valueField="address" textField="locationName" url="location/searchLocation.action?region=OFC" /> 
 			&nbsp;
 			<!-- <a href="#" class="easyui-linkbutton" iconCls="icon-cut"  onClick="cutCaseList()">执行</a> -->
 			<!-- <label>请求头</label>

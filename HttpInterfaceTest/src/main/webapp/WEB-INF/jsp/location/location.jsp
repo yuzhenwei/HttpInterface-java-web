@@ -36,7 +36,7 @@
 			        	
 			        	<th field="id" checkbox=true/> 
 			            <th field="locationName" width=300 align="center">环境名称</th>   
-			            <th field="address" width=300 align="center">环境地址</th>   
+			            <th field="address" width=300 align="center">环境地址</th>  
 			        </tr>   
 			    </thead>    
 			</table>  

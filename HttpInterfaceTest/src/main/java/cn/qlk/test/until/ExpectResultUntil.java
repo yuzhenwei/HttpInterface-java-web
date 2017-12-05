@@ -5,9 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import javax.print.attribute.standard.MediaName;
-
 import org.apache.http.message.BasicNameValuePair;
 
 public class ExpectResultUntil {
