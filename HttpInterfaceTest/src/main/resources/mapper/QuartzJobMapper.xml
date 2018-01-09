@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.qlk.test.dao.QuartzJobMapper">
+
+	<resultMap type="cn.qlk.test.bean.ScheduleJob" id="scheduleJobId">
+	
+		<result column="id" property="id"/>
+		<result column="jobName" property="jobName"/>
+		<result column="jobGroup" property="jobGroup"/>
+		<result column="triggerName" property="triggerName"/>
+		<result column="triggerGroupName" property="triggerGroupName"/>
+		<result column="jobStatus" property="jobStatus"/>
+		<result column="cronExpression" property="cronExpression"/>
+		<result column="job_desc" property="desc"/>
+	</resultMap>
+	
+	<select id="getJobs" resultMap="scheduleJobId">
+	
+		select * from schedule_job;
+	</select>
+	
+	<select id="getJob" resultMap="scheduleJobId">
+	
+		select * from schedule_job where jobName=#{jobName};
+	</select>
+	
+	<update id="upadeJob" parameterType="cn.qlk.test.bean.ScheduleJob">
+	
+	   	update schedule_job set jobStatus=#{jobStatus},cronExpression=#{cronExpression},job_desc=#{desc} where jobName=#{jobName};
+	
+	</update>
+	
+	<update id="updateStatus" parameterType="int">
+	
+	   	update schedule_job set jobStatus=#{jobStatus};
+	</update>
+
+</mapper>

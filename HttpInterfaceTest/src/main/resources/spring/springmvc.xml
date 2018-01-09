@@ -61,7 +61,6 @@ xmlns:mvc="http://www.springframework.org/schema/mvc"
 	    <property name="maxUploadSize" value="10485760000"></property><!-- 最大上传文件大小 -->  
 	    <property name="maxInMemorySize" value="10960"></property>  
 	</bean>
-   
-   
-   
+	
+   <bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean"/>  
 </beans>

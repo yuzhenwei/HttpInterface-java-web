@@ -26,6 +26,11 @@ public class CaseMangerService {
 	public void addCase(CaseManger casemanger){
 		
 		try {
+			if(casemanger.getHeaderStatus() ==0){
+				casemanger.setHeader(null);
+				
+			}
+			
 			int insertCase = caseMangerMapper.insertCase(casemanger);
 			if(insertCase !=0){
 				
@@ -116,6 +121,15 @@ public class CaseMangerService {
 	public Integer updateCase(CaseManger casemanger) {
 		int updateCase = 0;
 		try {
+			
+			if(casemanger.getHeaderStatus() ==0){
+				casemanger.setHeader(null);
+				
+			}
+			if(casemanger.getDependStatus()==0){
+				
+				casemanger.setDepend(null);
+			}
 			updateCase = caseMangerMapper.updateCase(casemanger);
 			if(updateCase>0){
 				return updateCase;

@@ -168,7 +168,7 @@ public class ClientHttp{
 		        
 				httpPost.setEntity(entity);
 				//设置请求头
-				if(header !=null){
+				if(header != null){
 					Map<String, String> map = ConvertUntil.headerConvert(header);
 					Set<String> maps = map.keySet();
 					for (String key : maps) {

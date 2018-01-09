@@ -20,6 +20,7 @@
   	<servlet.version>2.5</servlet.version>
   	<spring.version>4.1.6.RELEASE</spring.version>
   	<mybatis.version>3.2.7</mybatis.version>
+  	<quartz.version>2.2.1</quartz.version>
   	
   </properties>
   
@@ -271,7 +272,14 @@
 		    <groupId>org.apache.poi</groupId>  
 		    <artifactId>poi-ooxml</artifactId>  
 		    <version>3.14</version>  
-		</dependency> 	
+		</dependency>
+		
+		
+		 <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>${quartz.version}</version>
+        </dependency> 	
 				
   </dependencies>
   <build>

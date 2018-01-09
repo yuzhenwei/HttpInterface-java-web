@@ -262,11 +262,30 @@ $(function(){
 		    		
 		    		
 		    	}
+		    	
+		    	if(node.id =="quartz_schedul"){
+		    		//var tab = $('#centerTabs').tabs('getTab','执行用例');
+		    		if(!$('#centerTabs').tabs('exists','定时任务')){
+		    			$('#centerTabs').tabs('add',{    
+						    title:'定时任务',     
+						    closable:true,
+						    href:"Quartz/ReturnPage.action" 
+						});
+		    			
+		    		}else{
+		    			$('#centerTabs').tabs('select','定时任务'); 
+		    			var tab = $('#centerTabs').tabs('getTab','定时任务');
+			    		tab.panel('refresh', 'Quartz/ReturnPage.action');
+
+			    	   }
+		    		
+		    		
+		    		
+		    	}
 
 		    }
 		});		
 
-		
 	});
 
 

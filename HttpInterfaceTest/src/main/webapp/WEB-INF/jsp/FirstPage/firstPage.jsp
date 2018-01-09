@@ -23,7 +23,8 @@
 	<script type="text/javascript" src="js/ODCManger/odcManger.js"></script>
 	<script type="text/javascript" src="js/SkuManger/skuManger.js"></script>
 	<script type="text/javascript" src="js/doctor/doctorManger.js"></script>
-	<script type="text/javascript" src="js/patient/patientManger.js"></script>	
+	<script type="text/javascript" src="js/patient/patientManger.js"></script>
+	<script type="text/javascript" src="js/ScheduleJs/ScheduleJs.js"></script>	
 	<link rel="stylesheet" type="text/css" href="css/themes/icon.css"/>
 	<link rel="stylesheet" type="text/css" href="css/themes/default/easyui.css"/>
 	<link rel="stylesheet" type="text/css" href="css/custom/custom.css">
@@ -65,7 +66,7 @@
 				    						</ul>
 		    					</li>
 		    				
-		    					<li >
+		    					<li state="closed">
 	    							<span>后端接口平台</span>
 	    				
 	    				
@@ -115,7 +116,7 @@
 	    						</li>
 	    			
 	    			
-				    			<li >
+				    			<li state="closed">
 				    				<span>前端接口平台</span>
 				    				<ul>
 			    						<li state="closed">
@@ -143,6 +144,19 @@
 				    						</ul>
 				    					</li>
 				    					
+				    				</ul>
+				    			</li>
+				    			
+				    			<li state="closed" >
+				    				<span>定时任务</span>
+				    				<ul>
+		    							<li id="quartz_schedul">
+		    								<span>定时任务</span>
+		    							</li>
+
+				    				</ul>
+				    			</li>
+		    					
 				    				</ul>
 				    			</li>
 	

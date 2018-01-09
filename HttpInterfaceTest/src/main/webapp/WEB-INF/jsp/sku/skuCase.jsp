@@ -51,7 +51,7 @@
 						<!-- <th field="runTime" width=110px align="center">执行时间</th> -->
 						<!-- <th field="authResult" width=110px align="center">实际结果</th>
 						<th field="authStatus" width=110px align="center">状态</th> -->
-						<th field="interfaceDese" width=170px align="left">用例描述</th>	           
+						<th field="interfaceDese" width=170px align="left">用例描述</th>       
 		            </tr>
 		        </thead>
 		    </table>	
