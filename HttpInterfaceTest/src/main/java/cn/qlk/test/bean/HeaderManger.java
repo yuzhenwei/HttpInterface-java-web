@@ -1,8 +1,13 @@
 package cn.qlk.test.bean;
 
+import java.io.Serializable;
 
-public class HeaderManger {
+public class HeaderManger implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private String headerName;
 	private String headerContent;

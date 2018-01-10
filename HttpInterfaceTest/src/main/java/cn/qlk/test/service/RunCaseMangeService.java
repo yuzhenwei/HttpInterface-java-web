@@ -203,7 +203,7 @@ public class RunCaseMangeService {
 		
 		if(sendRequest == null){
 			caseManger.setAuthStatus("FAIL");
-			caseManger.setReason("请求接口失败");
+			caseManger.setReason("请求接口失败,请检查域名,地址,参数等格式是否正确");
 			
 			try {
 				runCaseMangerMapper.updateRunCase(caseManger);
@@ -528,7 +528,7 @@ public class RunCaseMangeService {
 		
 		if(sendRequest == null){
 			caseManger.setAuthStatus("FAIL");
-			caseManger.setReason("请求接口失败");
+			caseManger.setReason("请求接口失败,请检查域名,地址,参数等格式是否正确");
 			
 			try {
 				runCaseMangerMapper.updateRunCase(caseManger);

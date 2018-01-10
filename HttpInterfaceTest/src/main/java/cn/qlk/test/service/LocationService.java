@@ -23,6 +23,8 @@ public class LocationService {
 		try {
 			if(location.getLocationName()!=null && location.getAddress()!=null){
 				
+				location.setAddress(location.getAddress().replaceAll(" ", ""));
+				
 				int insert = locationMapper.insert(location);
 				if(insert!=0){
 					logger.debug("插入环境地址成功");
@@ -77,6 +79,11 @@ public class LocationService {
 	public Integer updateLocation(Location location){
 		Integer updateLocation = null;
 		try {
+			if(location.getAddress()!=null){
+				
+				location.setAddress(location.getAddress().replaceAll(" ", ""));
+			}
+			
 			updateLocation = locationMapper.updateLocation(location);
 			logger.debug("更新测试地址成功：更新后的数据名称为："+location.getLocationName()+"地址为："+location.getAddress());
 			return updateLocation;

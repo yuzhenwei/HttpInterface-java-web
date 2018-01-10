@@ -130,6 +130,15 @@ public class CaseMangerService {
 				
 				casemanger.setDepend(null);
 			}
+			if(casemanger.getInterfaceParameter()!=null){
+				
+				casemanger.setInterfaceParameter(casemanger.getInterfaceParameter().replaceAll(" ", ""));
+				
+			}
+			if(casemanger.getInterfaceAdress()!=null){
+				casemanger.setInterfaceAdress(casemanger.getInterfaceAdress().replaceAll(" ", ""));
+				
+			}
 			updateCase = caseMangerMapper.updateCase(casemanger);
 			if(updateCase>0){
 				return updateCase;

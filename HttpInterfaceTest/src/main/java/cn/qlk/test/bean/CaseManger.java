@@ -1,7 +1,13 @@
 package cn.qlk.test.bean;
 
-public class CaseManger {
+import java.io.Serializable;
+
+public class CaseManger implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int caseId;//���
 	private String interfaceName; //�ӿ����
 	private String interfaceAdress;  //�ӿڵ�ַ
