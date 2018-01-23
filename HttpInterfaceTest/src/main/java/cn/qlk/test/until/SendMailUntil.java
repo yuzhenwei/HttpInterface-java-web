@@ -5,11 +5,19 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.Date;
 import java.util.Properties;
+
+import javax.mail.BodyPart;
 import javax.mail.Message;
+import javax.mail.Multipart;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import javax.mail.internet.MimeUtility;
+
+import sun.misc.BASE64Encoder;
 
 public class SendMailUntil {
 
@@ -55,7 +63,18 @@ public class SendMailUntil {
 	           message.setFrom(new InternetAddress(sendName));
 	 
 	            // 邮件的主题
-	            message.setSubject(subject);
+	            //message.setSubject(subject);
+	            
+	            
+	            //使用Bese64编码邮件主题,防止乱码
+	            @SuppressWarnings("restriction")
+				sun.misc.BASE64Encoder base64 = new BASE64Encoder();
+	            String subjectNew = new String(base64.encode(subject.getBytes("UTF-8")));
+	            //mailMessage.setSubject("=?UTF-8?B?" + subject + "?=");
+	            message.setSubject(MimeUtility.encodeText(subject, "UTF-8", "B"));
+	         //   mailMessage.setSubject(mailInfo.getSubject())
+	            
+	            
 	            //收件人
 	            //message.addRecipient(Message.RecipientType.TO, toAddress)
 	            message.setRecipient(Message.RecipientType.TO, new InternetAddress(
@@ -65,8 +84,19 @@ public class SendMailUntil {
                    
                     message.setRecipients(Message.RecipientType.CC, InternetAddress.parse(copyto)); 
                 }
-	            // 邮件的内容
-	            message.setContent(content, "text/html;charset=utf-8");
+             // MiniMultipart类是一个容器类，包含MimeBodyPart类型的对象
+                Multipart mainPart = new MimeMultipart();
+                // 创建一个包含HTML内容的MimeBodyPart
+                BodyPart html = new MimeBodyPart();
+                // 设置HTML内容
+	            html.setContent(content, "text/html;charset=UTF-8");	            
+                mainPart.addBodyPart(html);
+                // 将MiniMultipart对象设置为邮件内容
+                message.setContent(mainPart);
+                // 发送邮件
+
+                
+	            
 	            // 邮件发送时间
 	            message.setSentDate(new Date());
 	 
