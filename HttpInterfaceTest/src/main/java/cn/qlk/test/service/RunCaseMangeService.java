@@ -138,20 +138,7 @@ public class RunCaseMangeService {
 		if(!caseManger.getParameterType().equals("json")){
 			if(dependPramater!= null){
 				interfaceParameter = caseManger.getInterfaceParameter() +"&"+dependPramater ;
-				/*String encryptByPublicKey = null;
-				
-				String interfaceParameter2 = caseManger.getInterfaceParameter();
-				String expectValues = ExpectResultUntil.getExpectValues(interfaceParameter2);
-				
-				try {
-					encryptByPublicKey = RSAUtil.encryptByPublicKey(expectValues);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				String expectKey = ExpectResultUntil.getExpectKey(interfaceParameter2) +encryptByPublicKey;
-				interfaceParameter = expectKey+dependPramater;*/
+		
 				
 			}else{
 				interfaceParameter = caseManger.getInterfaceParameter();
@@ -203,7 +190,7 @@ public class RunCaseMangeService {
 		
 		if(sendRequest == null){
 			caseManger.setAuthStatus("FAIL");
-			caseManger.setReason("请求接口失败,请检查域名,地址,参数等格式是否正确");
+			caseManger.setReason("<a style='color:red'>请求接口失败,请检查域名,地址,参数等格式是否正确</a>");
 			
 			try {
 				runCaseMangerMapper.updateRunCase(caseManger);
@@ -229,6 +216,7 @@ public class RunCaseMangeService {
 		if(authResult.contains(expectResult)){
 			
 			caseManger.setAuthStatus("PASS");
+			caseManger.setReason(null);
 			caseManger.setRunTime(runTime+"s");
 			try {
 				logger.debug("验证通过的接口的信息为："+caseManger.toString());
@@ -241,7 +229,7 @@ public class RunCaseMangeService {
 			
 		}else{
 				caseManger.setAuthStatus("FAIL");
-				caseManger.setReason("实际结果与预期结果不匹配：<br>预期结果："+expectResult+"<br>"+"实际结果："+authResult);
+				caseManger.setReason("<a style='color:red'> 实际结果与预期结果不匹配：<br>预期结果："+expectResult+"<br>"+"实际结果："+authResult+"</a>");
 				try {
 					runCaseMangerMapper.updateRunCase(caseManger);
 					logger.debug("更新成功");
@@ -554,6 +542,7 @@ public class RunCaseMangeService {
 		if(authResult.contains(expectResult)){
 			
 			caseManger.setAuthStatus("PASS");
+			caseManger.setReason(null);
 			caseManger.setRunTime(runTime+"s");
 			try {
 				logger.debug("验证通过的接口的信息为："+caseManger.toString());

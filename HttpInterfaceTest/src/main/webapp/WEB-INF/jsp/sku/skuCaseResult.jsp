@@ -42,7 +42,7 @@
 						<th field="interfaceParameter" width=170px align="left">请求参数</th>
 						<!-- <th field="expectResult" width=110px align="center">预期结果</th> -->
 						<th field="authStatus" width=110px align="center">执行结果</th>
-						<th field="reason" width=110px align="left">原因</th>
+						<th field="reason"  width=110px align="left">原因</th>
 						<th field="runTime" width=110px align="center">执行时间</th>
 						<!-- 		
 						<th field="interfaceDese" width=160px align="center">用例描述</th>

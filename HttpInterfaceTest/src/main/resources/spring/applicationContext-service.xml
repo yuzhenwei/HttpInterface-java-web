@@ -18,4 +18,11 @@ xmlns:mvc="http://www.springframework.org/schema/mvc"
 		<!-- 自动装配bean，但是service层需要进行注解@service -->
 		<context:component-scan base-package="cn.qlk.test.service"/> 
 		
+		<bean id="jobFactory" class="cn.qlk.test.service.schedule.MyJobFactory" />
+		
+	   	<bean id="schedulerFactoryBean"  class="org.springframework.scheduling.quartz.SchedulerFactoryBean"> 
+	   		<property name="jobFactory" ref="jobFactory" />
+         
+	   	</bean>  
+ 
 </beans>

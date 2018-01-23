@@ -43,10 +43,10 @@
 	function forStats(value,row,index){
 		
 		if(value==0){
-			return "暂停中";
+			return "<a style='color:red'>暂停中</a>";
 		}else if(value==1){
 			
-			return "运行中";
+			return "<a style='color:green'>运行中</a>";
 		}else{
 			
 			return "已禁用";

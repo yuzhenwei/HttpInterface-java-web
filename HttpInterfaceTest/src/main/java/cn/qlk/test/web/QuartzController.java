@@ -13,6 +13,7 @@ import org.quartz.impl.StdSchedulerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,9 +21,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import cn.qlk.test.bean.ScheduleJob;
 import cn.qlk.test.service.QuartzService;
-import cn.qlk.test.service.schedule.QuartzTest;
-import cn.qlk.test.service.schedule.QuartzTest2;
-import cn.qlk.test.service.schedule.QuartzTest3;
+import cn.qlk.test.service.schedule.QuartzTestSKU;
+import cn.qlk.test.service.schedule.QuartzTestODC;
+import cn.qlk.test.service.schedule.QuartzTestOFC;
 import cn.qlk.test.service.schedule.ScheduleJobs;
 
 @Controller
@@ -35,6 +36,9 @@ public class QuartzController {
 	
 	@Autowired
 	private ScheduleJobs skuSchedule;
+	
+	@Autowired
+	private SchedulerFactoryBean sf;
 
     private static final String SKU_SCHEDULE="SKU_SCHEDULE";
     private static final String ODC_SCHEDULE="ODC_SCHEDULE";
@@ -44,15 +48,14 @@ public class QuartzController {
 	@RequestMapping("/startAll")
 	public void est() throws SchedulerException{
 	  
-	  //1.创建Scheduler的工厂
-      SchedulerFactory sf = new StdSchedulerFactory();
+	 
       //2.从工厂中获取调度器实例
       Scheduler scheduler = sf.getScheduler();
       	
       //5.注册任务和定时器
-      scheduler.scheduleJob(skuSchedule.addJob(SKU_SCHEDULE,QuartzTest.class), skuSchedule.addTrigger(SKU_SCHEDULE));
-      scheduler.scheduleJob(skuSchedule.addJob(ODC_SCHEDULE,QuartzTest2.class), skuSchedule.addTrigger(ODC_SCHEDULE));
-      scheduler.scheduleJob(skuSchedule.addJob(OFC_SCHEDULE,QuartzTest3.class), skuSchedule.addTrigger(OFC_SCHEDULE));
+      scheduler.scheduleJob(skuSchedule.addJob(SKU_SCHEDULE,QuartzTestSKU.class), skuSchedule.addTrigger(SKU_SCHEDULE));
+      scheduler.scheduleJob(skuSchedule.addJob(ODC_SCHEDULE,QuartzTestODC.class), skuSchedule.addTrigger(ODC_SCHEDULE));
+      scheduler.scheduleJob(skuSchedule.addJob(OFC_SCHEDULE,QuartzTestOFC.class), skuSchedule.addTrigger(OFC_SCHEDULE));
 
       //6.启动 调度器
       scheduler.start();

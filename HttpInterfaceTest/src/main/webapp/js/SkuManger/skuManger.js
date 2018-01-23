@@ -286,3 +286,4 @@ function searchRunCaseResultInterface_sku(){
 		window.location.href="LeadToExcel/outExcel.action?interfaceName="+interfaceName+"&region=SKU";
 	}
 
+

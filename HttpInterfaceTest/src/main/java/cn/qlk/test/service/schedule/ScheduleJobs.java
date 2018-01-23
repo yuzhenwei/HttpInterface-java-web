@@ -1,7 +1,6 @@
 package cn.qlk.test.service.schedule;
 
 import java.util.Date;
-
 import org.quartz.CronScheduleBuilder;
 import org.quartz.Job;
 import org.quartz.JobBuilder;
@@ -10,7 +9,6 @@ import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import cn.qlk.test.bean.ScheduleJob;
 import cn.qlk.test.dao.QuartzJobMapper;
 
@@ -20,6 +18,7 @@ public class ScheduleJobs {
 	
 	@Autowired
 	private QuartzJobMapper jobMapper;
+	
     
     /***
      * 创建定时任务的名称
@@ -59,4 +58,6 @@ public class ScheduleJobs {
 	      
 	      return t;
 	}
+	
+	
 }

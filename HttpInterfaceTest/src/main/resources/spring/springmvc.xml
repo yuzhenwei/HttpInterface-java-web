@@ -62,5 +62,5 @@ xmlns:mvc="http://www.springframework.org/schema/mvc"
 	    <property name="maxInMemorySize" value="10960"></property>  
 	</bean>
 	
-   <bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean"/>  
+	
 </beans>

@@ -76,6 +76,11 @@
         <artifactId>spring-context</artifactId>
         <version>${spring.version}</version>
     </dependency>
+    <dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-context-support</artifactId>
+	    <version>${spring.version}</version>
+	</dependency>
 
     <dependency>
         <groupId>org.springframework</groupId>
@@ -113,8 +118,9 @@
 	<dependency>
 	    <groupId>org.aspectj</groupId>
 	    <artifactId>aspectjweaver</artifactId>
-	    <version>1.6.11</version>
+	    <version>1.7.2</version>
 	</dependency>
+
 	
 	
     <!-- spring配置结束 -->
@@ -274,12 +280,20 @@
 		    <version>3.14</version>  
 		</dependency>
 		
-		
+		<!-- quartz定时任务 -->
 		 <dependency>
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
             <version>${quartz.version}</version>
-        </dependency> 	
+        </dependency> 
+        
+        
+        <!-- 发送邮件 -->	
+        <dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>mail</artifactId>
+		    <version>1.4.7</version>
+		</dependency>
 				
   </dependencies>
   <build>
