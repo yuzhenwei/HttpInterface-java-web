@@ -6,7 +6,7 @@
 			
 		}
 		);"json"
-		
+		$.messager.alert('提示','任务启动成功','info');
 		$("#quartz_page").datagrid('load');
 	}
 	
@@ -18,7 +18,7 @@
 			
 		}
 		);"json"
-		
+		$.messager.alert('提示','任务已暂停','info');
 		$("#quartz_page").datagrid('load');
 	}
 	
@@ -29,7 +29,7 @@
 			
 		}
 		);"json"
-		
+		$.messager.alert('提示','任务已恢复','info');
 		$("#quartz_page").datagrid('load');
 	}
 	

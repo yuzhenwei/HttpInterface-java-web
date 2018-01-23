@@ -34,7 +34,7 @@
 		    
 		    <div id="quartz_page_icon" style="padding:5px;">
 			&nbsp;&nbsp;
-			<a href="#" class="easyui-linkbutton"  iconCls="icon-man" onClick="allStart()">&nbsp;&nbsp;启动&nbsp;&nbsp;</a>			
+			<a href="#" class="easyui-linkbutton"  iconCls="icon-man" onClick="allStart()">&nbsp;&nbsp;All START&nbsp;&nbsp;</a>			
 		</div>	
 		
 	</div>	
