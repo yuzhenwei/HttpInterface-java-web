@@ -1,12 +1,14 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-<meta charset="UTF-8">
 </head>
 <body leftmargin="8" marginwidth="0" topmargin="8" marginheight="4"
     offset="0">
     <table width="95%" cellpadding="0" cellspacing="0"
-        style="font-size: 14pt; font-family: å¾®è½¯éé»">
+        style="font-size: 14pt; font-family: 微软雅黑 ">
         <tr>
             <td><br/>
             <b><font color="#0B610B">该邮件为自动发送模板，非相关人员可忽略</font></b> 

@@ -89,7 +89,7 @@ public class SendMailUntil {
                 // 创建一个包含HTML内容的MimeBodyPart
                 BodyPart html = new MimeBodyPart();
                 // 设置HTML内容
-	            html.setContent(content, "text/html;charset=UTF-8");	            
+	            html.setContent("<li>发送原因：通过用例定时监控维护接口</li>", "text/html;charset=UTF-8");	            
                 mainPart.addBodyPart(html);
                 // 将MiniMultipart对象设置为邮件内容
                 message.setContent(mainPart);
