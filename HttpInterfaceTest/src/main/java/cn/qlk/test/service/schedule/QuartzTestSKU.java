@@ -35,10 +35,11 @@ public class QuartzTestSKU implements Job{
 		
 		URL url = this.getClass().getClassLoader().getResource("/MailContent.jsp");
 		File file = new File(url.getPath());	        
-		String content = SendMailUntil.getContent(file);
+		//String content = SendMailUntil.getContent(file);
 		
 		ResourceBundle resource = ResourceBundle.getBundle("mail");
 		String to = resource.getString("to");
+		String content = resource.getString("context");
 		String copyto = resource.getString("copyto");
 		String smtp = resource.getString("smtp");
 		String host = resource.getString("host");
