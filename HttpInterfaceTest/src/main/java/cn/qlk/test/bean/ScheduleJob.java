@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class ScheduleJob  implements Serializable{ 
 	/**
-	 * 
+	 * 定时任务
 	 */
 	private static final long serialVersionUID = 1L;
 

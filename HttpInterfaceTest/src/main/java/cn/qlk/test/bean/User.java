@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class User implements Serializable{
 	
 	/**
-	 * 
+	 * 用户
 	 */
 	private static final long serialVersionUID = 1L;
 	private int id;

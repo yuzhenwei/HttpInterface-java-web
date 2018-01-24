@@ -22,7 +22,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		String attribute = (String) session.getAttribute("user");
 
 		if (requestURI.indexOf("login.action") > 0 || requestURI.indexOf("loginOn.action") > 0 ||
-				requestURI.indexOf("loginOut.action")>0 || requestURI.indexOf("report/SKU.action")>0 || requestURI.indexOf("report/ODC.action") >0||requestURI.indexOf("report/SKU.action")>0) {
+				requestURI.indexOf("loginOut.action")>0 || requestURI.indexOf("report/SKU.action")>0 || requestURI.indexOf("report/ODC.action") >0||requestURI.indexOf("report/OFC.action")>0) {
 
 			return true;
 		}else if (attribute!=null) {

@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class HeaderManger implements Serializable {
 
 	/**
-	 * 
+	 * 请求头的管理字段
 	 */
 	private static final long serialVersionUID = 1L;
 	private int id;

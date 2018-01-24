@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Location implements Serializable{
 	
 	/**
-	 * 
+	 * 测试地址bean
 	 */
 	private static final long serialVersionUID = 1L;
 	private int id;

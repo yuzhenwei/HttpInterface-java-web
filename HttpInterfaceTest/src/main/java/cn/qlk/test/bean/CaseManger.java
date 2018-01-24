@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class CaseManger implements Serializable{
 	
 	/**
-	 * 
+	 * 用例的字段bean
 	 */
 	private static final long serialVersionUID = 1L;
 	private int caseId;//���
