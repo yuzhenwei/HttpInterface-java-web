@@ -33,7 +33,7 @@ public class QuartzTestSKU implements Job{
 		
 		final String subject = "自动发送邮件---接口测试报告";
 		
-		URL url = this.getClass().getClassLoader().getResource("/MailContent.txt");
+		URL url = this.getClass().getClassLoader().getResource("/MailContent.jsp");
 		File file = new File(url.getPath());	        
 		String content = SendMailUntil.getContent(file);
 		
