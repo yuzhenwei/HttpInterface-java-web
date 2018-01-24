@@ -74,17 +74,17 @@ public class QuartzController {
 	 * @throws SchedulerException
 	 */
 	@RequestMapping("/stop")
-	public void StopQuartz(String triggerName, String triggerGroupName,String jobName) throws SchedulerException{
-		 //1.创建Scheduler的工厂
-	      SchedulerFactory sf = new StdSchedulerFactory();
-	      //2.从工厂中获取调度器实例
+	public void StopQuartz(String triggerName, String triggerGroupName,String jobName) throws SchedulerException{      
+	      //从工厂中获取调度器实例
 	      Scheduler scheduler = sf.getScheduler();
 		TriggerKey triggerKey = new TriggerKey(triggerName, triggerGroupName);
 		scheduler.pauseTrigger(triggerKey);
 		//更改数据库的状态
 		ScheduleJob job = quartzService.getJob(jobName);
 		job.setJobStatus(0);//0已停止
+		logger.debug("停止服务："+jobName+"....");
 		quartzService.updateJob(job);
+		logger.debug(jobName+"已停止成功");
 	}
 	
 	
@@ -94,15 +94,16 @@ public class QuartzController {
 	 */
 	@RequestMapping("/restart")
 	public void RestartQuartz(String jobName,String jobGroup ) throws SchedulerException{
-		 //1.创建Scheduler的工厂
-	      SchedulerFactory sf = new StdSchedulerFactory();
+		 
 	      JobKey jobKey = new JobKey(jobName, jobGroup);
 	      //2.从工厂中获取调度器实例
 	      Scheduler scheduler = sf.getScheduler();
 		scheduler.resumeJob(jobKey);
 		ScheduleJob job = quartzService.getJob(jobName);
+		logger.debug("恢复服务中："+jobName+"...");
 		job.setJobStatus(1);//0启动
 		quartzService.updateJob(job);
+		logger.debug(jobName+"已恢复成功");
 	}
 	
 	
