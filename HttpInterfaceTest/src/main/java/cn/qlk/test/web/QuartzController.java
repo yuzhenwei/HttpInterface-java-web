@@ -44,14 +44,15 @@ public class QuartzController {
     private static final String ODC_SCHEDULE="ODC_SCHEDULE";
     private static final String OFC_SCHEDULE="OFC_SCHEDULE";
     
+    public Scheduler scheduler;  
     
 	@RequestMapping("/startAll")
 	public void est() throws SchedulerException{
 	  
 	 
       //2.从工厂中获取调度器实例
-      Scheduler scheduler = sf.getScheduler();
-      	
+      
+		scheduler=sf.getScheduler();
       //5.注册任务和定时器
       scheduler.scheduleJob(skuSchedule.addJob(SKU_SCHEDULE,QuartzTestSKU.class), skuSchedule.addTrigger(SKU_SCHEDULE));
       scheduler.scheduleJob(skuSchedule.addJob(ODC_SCHEDULE,QuartzTestODC.class), skuSchedule.addTrigger(ODC_SCHEDULE));
@@ -75,8 +76,7 @@ public class QuartzController {
 	 */
 	@RequestMapping("/stop")
 	public void StopQuartz(String triggerName, String triggerGroupName,String jobName) throws SchedulerException{      
-	      //从工厂中获取调度器实例
-	      Scheduler scheduler = sf.getScheduler();
+	      
 		TriggerKey triggerKey = new TriggerKey(triggerName, triggerGroupName);
 		scheduler.pauseTrigger(triggerKey);
 		//更改数据库的状态
@@ -96,9 +96,7 @@ public class QuartzController {
 	public void RestartQuartz(String jobName,String jobGroup ) throws SchedulerException{
 		 
 	      JobKey jobKey = new JobKey(jobName, jobGroup);
-	      //2.从工厂中获取调度器实例
-	      Scheduler scheduler = sf.getScheduler();
-		scheduler.resumeJob(jobKey);
+	      scheduler.resumeJob(jobKey);
 		ScheduleJob job = quartzService.getJob(jobName);
 		logger.debug("恢复服务中："+jobName+"...");
 		job.setJobStatus(1);//0启动

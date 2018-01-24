@@ -36,7 +36,7 @@ public class QuartzTestSKU implements Job{
 		File file = new File(url.getPath());	        
 		String content = SendMailUntil.getContent(file);
 		*/		
-		
+		/*
 		ResourceBundle resource = ResourceBundle.getBundle("mail");
 		String to = resource.getString("to");
 		
@@ -54,8 +54,9 @@ public class QuartzTestSKU implements Job{
 		}
 		SendMailUntil.send(to, copyto,subject, smtp, host,sendName,sendPort,userName,userPwd);
 		
-	
+	*/
 		
+		System.out.println("111111111111111111");
 	}
 	
 	
