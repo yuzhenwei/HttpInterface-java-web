@@ -1,6 +1,7 @@
 package cn.qlk.test.service.schedule;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -39,7 +40,12 @@ public class QuartzTestSKU implements Job{
 		
 		ResourceBundle resource = ResourceBundle.getBundle("mail");
 		String to = resource.getString("to");
-		String content = resource.getString("context");
+		String content = "<li>项目名称：接口测试平台接口用例</li> <li>发送形式：定时发送</li><li>发送原因：通过用例定时监控维护接口</li><li>基础数据：<a href="+"http://10.9.2.142:18080/HttpInterfaceTest/report/SKU.action"+
+		">基础数据平台&接口测试报告</a></li><li>OFC项目： <a href="+
+				"http://10.9.2.142:18080/HttpInterfaceTest/report/OFC.action"+
+		">OFC接口测试报告</a></li><li>ODC项目：<a href=" + 
+				"http://10.9.2.142:18080/HttpInterfaceTest/report/ODC.action"+">ODC接口测试报告</a></li>";
+		
 		String copyto = resource.getString("copyto");
 		String smtp = resource.getString("smtp");
 		String host = resource.getString("host");
