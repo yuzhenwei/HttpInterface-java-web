@@ -1,7 +1,6 @@
 package cn.qlk.test.service.schedule;
 
-import java.io.File;
-import java.net.URL;
+
 import java.util.List;
 import java.util.ResourceBundle;
 import org.quartz.Job;
@@ -33,10 +32,10 @@ public class QuartzTestODC  implements Job{
 		String copyto = resource.getString("copyto");
 		final String subject = "自动发送邮件---接口测试报告";
 		
-		URL url = this.getClass().getClassLoader().getResource("/MailContent.txt");
+		/*URL url = this.getClass().getClassLoader().getResource("/MailContent.txt");
 		File file = new File(url.getPath());
 	        
-		String content = SendMailUntil.getContent(file);
+		String content = SendMailUntil.getContent(file);*/
 		
 		
 		String smtp = resource.getString("smtp");
@@ -50,7 +49,7 @@ public class QuartzTestODC  implements Job{
 		for (CaseManger caseManger : selectCase) {
 			runCaseMangerService.runCaseBacth(caseManger.getCaseId(), "http://");		   		
 		}
-		SendMailUntil.send(to, copyto,subject, content, smtp, host,sendName,sendPort,userName,userPwd);
+		SendMailUntil.send(to, copyto,subject, smtp, host,sendName,sendPort,userName,userPwd);
 	
 	
 	}		

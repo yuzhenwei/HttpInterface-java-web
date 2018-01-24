@@ -1,8 +1,6 @@
 package cn.qlk.test.service.schedule;
 
-import java.io.File;
-import java.io.UnsupportedEncodingException;
-import java.net.URL;
+
 import java.util.List;
 import java.util.ResourceBundle;
 import org.quartz.Job;
@@ -34,17 +32,13 @@ public class QuartzTestSKU implements Job{
 		
 		final String subject = "自动发送邮件---接口测试报告";
 		
-		URL url = this.getClass().getClassLoader().getResource("/MailContent.jsp");
+		/*URL url = this.getClass().getClassLoader().getResource("/MailContent.jsp");
 		File file = new File(url.getPath());	        
-		//String content = SendMailUntil.getContent(file);
+		String content = SendMailUntil.getContent(file);
+		*/		
 		
 		ResourceBundle resource = ResourceBundle.getBundle("mail");
 		String to = resource.getString("to");
-		String content = "<li>项目名称：接口测试平台接口用例</li> <li>发送形式：定时发送</li><li>发送原因：通过用例定时监控维护接口</li><li>基础数据：<a href="+"http://10.9.2.142:18080/HttpInterfaceTest/report/SKU.action"+
-		">基础数据平台&接口测试报告</a></li><li>OFC项目： <a href="+
-				"http://10.9.2.142:18080/HttpInterfaceTest/report/OFC.action"+
-		">OFC接口测试报告</a></li><li>ODC项目：<a href=" + 
-				"http://10.9.2.142:18080/HttpInterfaceTest/report/ODC.action"+">ODC接口测试报告</a></li>";
 		
 		String copyto = resource.getString("copyto");
 		String smtp = resource.getString("smtp");
@@ -58,7 +52,7 @@ public class QuartzTestSKU implements Job{
 		for (CaseManger caseManger : selectCase) {
 			runCaseMangerService.runCaseBacth(caseManger.getCaseId(), "http://");		   		
 		}
-		SendMailUntil.send(to, copyto,subject, content, smtp, host,sendName,sendPort,userName,userPwd);
+		SendMailUntil.send(to, copyto,subject, smtp, host,sendName,sendPort,userName,userPwd);
 		
 	
 		

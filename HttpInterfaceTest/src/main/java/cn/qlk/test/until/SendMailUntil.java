@@ -21,8 +21,14 @@ import sun.misc.BASE64Encoder;
 
 public class SendMailUntil {
 
+	 final static String content = "<b><font color="+"#0B610B"+">该邮件为自动发送模板，非相关人员可忽略</font></b> "
+			+ "<hr size="+"2"+" width="+"100%"+" align="+"center"+" /><li>项目名称：接口测试平台接口用例</li> <li>发送形式：定时发送</li><li>发送原因：通过用例定时监控维护接口</li><li>基础数据：<a href="+"http://10.9.2.142:18080/HttpInterfaceTest/report/SKU.action"+
+	">基础数据平台&接口测试报告</a></li><li>OFC项目： <a href="+
+			"http://10.9.2.142:18080/HttpInterfaceTest/report/OFC.action"+
+	">OFC接口测试报告</a></li><li>ODC项目：<a href=" + 
+			"http://10.9.2.142:18080/HttpInterfaceTest/report/ODC.action"+">ODC接口测试报告</a></li>";
 	
-	 public static boolean send(String to,String copyto, String subject, String content, String smtp, String host,
+	 public static boolean send(String to,String copyto, String subject,  String smtp, String host,
 	            String sendName, String sendPort, String userName, String userPwd) {
 	 
 	        // 第一步：创建Session
