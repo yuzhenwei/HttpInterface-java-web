@@ -48,9 +48,15 @@ public class QuartzTestOFC implements Job {
 		String userPwd = resource.getString("userPwd");
 		//执行测试用例
 		List<CaseManger> selectCase = caseMangerService.selectCase("OFC");
-		for (CaseManger caseManger : selectCase) {
-			runCaseMangerService.runCaseBacth(caseManger.getCaseId(), "http://");		   		
+		
+		if(selectCase != null){
+			
+			for (CaseManger caseManger : selectCase) {
+				runCaseMangerService.runCaseBacth(caseManger.getCaseId(), "http://");		   		
+			}
+			
 		}
+		
 		SendMailUntil.send(to, copyto,subject, smtp, host,sendName,sendPort,userName,userPwd);
 		
 	

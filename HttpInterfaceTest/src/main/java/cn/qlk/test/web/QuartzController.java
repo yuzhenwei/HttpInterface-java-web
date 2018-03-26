@@ -2,12 +2,11 @@ package cn.qlk.test.web;
 
 import java.util.Date;
 import java.util.List;
-
 import org.quartz.JobKey;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.quartz.SchedulerFactory;
-
+import org.quartz.TriggerBuilder;
 import org.quartz.TriggerKey;
 import org.quartz.impl.StdSchedulerFactory;
 import org.slf4j.Logger;
@@ -22,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import cn.qlk.test.bean.ScheduleJob;
 import cn.qlk.test.service.QuartzService;
 import cn.qlk.test.service.schedule.QuartzTestSKU;
+import cn.qlk.test.service.schedule.AllInterfaceTest;
 import cn.qlk.test.service.schedule.QuartzTestODC;
 import cn.qlk.test.service.schedule.QuartzTestOFC;
 import cn.qlk.test.service.schedule.ScheduleJobs;
@@ -54,12 +54,13 @@ public class QuartzController {
       
 		scheduler=sf.getScheduler();
       //5.注册任务和定时器
-      scheduler.scheduleJob(skuSchedule.addJob(SKU_SCHEDULE,QuartzTestSKU.class), skuSchedule.addTrigger(SKU_SCHEDULE));
-      scheduler.scheduleJob(skuSchedule.addJob(ODC_SCHEDULE,QuartzTestODC.class), skuSchedule.addTrigger(ODC_SCHEDULE));
-      scheduler.scheduleJob(skuSchedule.addJob(OFC_SCHEDULE,QuartzTestOFC.class), skuSchedule.addTrigger(OFC_SCHEDULE));
+		
+		scheduler.scheduleJob(skuSchedule.addJob(SKU_SCHEDULE,QuartzTestSKU.class), skuSchedule.addTrigger(SKU_SCHEDULE));
+      	scheduler.scheduleJob(skuSchedule.addJob(ODC_SCHEDULE,QuartzTestODC.class), skuSchedule.addTrigger(ODC_SCHEDULE));
+      	scheduler.scheduleJob(skuSchedule.addJob(OFC_SCHEDULE,QuartzTestOFC.class), skuSchedule.addTrigger(OFC_SCHEDULE));
 
       //6.启动 调度器
-      scheduler.start();
+      	scheduler.start();
       
      
 		quartzService.updateStatus(1);
